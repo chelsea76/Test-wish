@@ -1,0 +1,8 @@
+center
+  h1 Log In!
+  br
+  h4 Choose your favorite provider:
+  br
+  - if Devise.mappings[:user].omniauthable?
+    - button_label = "Twitter Sign in with twitter".html_safe
+    = link_to button_label, '/users/auth/twitter', class: 'login-provider'

@@ -1,0 +1,15 @@
+.navigation-outer
+  nav#main
+    = link_to root_path do
+      .brand
+        .icon= t(:'community.name').split(' ').map { |word| word.first(1) }.join
+        h1= t :'community.name'
+        h2= t :'community.tagline'
+    ul
+      - if user_signed_in?
+        li= link_to 'Log Out', logout_path, method: :delete
+      - else
+        li= link_to 'Log In', login_path
+      li= link_to 'About', about_path
+      li= link_to 'New Submission', new_post_path, data: { secondary: true }
+      li= link_to "More #{icon :'angle-down'}".html_safe, new_post_path
