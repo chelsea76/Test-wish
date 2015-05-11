@@ -8,7 +8,6 @@ FactoryGirl.define do
     user
     title { Faker::Lorem.sentence }
     description { Faker::Lorem.sentence }
-    url { Faker::Internet.url }
   end
 
   factory :text_post, class: Post::Text, parent: :post_base do

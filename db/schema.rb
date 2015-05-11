@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206061412) do
+ActiveRecord::Schema.define(version: 20150511161051) do
 
   create_table "authorizations", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,     null: false
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150206061412) do
     t.integer  "user_id",      limit: 4,                            null: false
     t.string   "type",         limit: 255,   default: "Post::Base", null: false
     t.text     "description",  limit: 65535
-    t.string   "url",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",         limit: 255

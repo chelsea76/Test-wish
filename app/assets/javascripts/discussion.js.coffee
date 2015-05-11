@@ -33,3 +33,7 @@ $ ->
   $('.view-discussion > a,a[data-secondary]').click (e) ->
     e.preventDefault()
     openURLInPanel $(this).attr('href')
+
+  $('.url > a,a[data-secondary]').click (e) ->
+    e.preventDefault()
+    openURLInPanel $(this).attr('href')

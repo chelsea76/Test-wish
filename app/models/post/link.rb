@@ -1,7 +1,7 @@
 module Post
   class Link < Post::Base
-    validates :url, presence: true
-    validate :url_is_valid
+    #validates :url, presence: true
+    #validate :url_is_valid
 
     def url_is_valid
       uri = URI.parse(url)

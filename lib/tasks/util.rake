@@ -19,8 +19,7 @@ namespace :util do
         rand(100).times do
           post = Post::Base.create! title: Faker::Company.name,
                                     description: Faker::Company.catch_phrase,
-                                    url: Faker::Internet.url,
-                                    user: User.order('RANDOM()').first
+                                    user: User.order('RAND()').first
           datetime = Time.now - rand(10).days - rand(24).hours - rand(1440).minutes
           post.update_attributes created_at: datetime, updated_at: datetime
         end
@@ -29,8 +28,8 @@ namespace :util do
       desc 'populate the environment with a bunch of fake upvotes'
       task upvotes: :environment do
         rand(User.count * Post::Base.count).times do
-          user = User.order('RANDOM()').first
-          post = Post::Base.order('RANDOM()').first
+          user = User.order('RAND()').first
+          post = Post::Base.order('RAND()').first
           post.liked_by user
         end
       end
@@ -38,10 +37,10 @@ namespace :util do
       desc 'populate the environment with a bunch of fake comments'
       task comments: :environment do
         rand(500).times do
-          post = Post::Base.order('RANDOM()').first
+          post = Post::Base.order('RAND()').first
           comment = post.comment_threads.create! \
             body: Faker::Lorem.paragraphs(1 + rand(3)).join("\n\n"),
-            user: User.order('RANDOM()').first
+            user: User.order('RAND()').first
           datetime = post.created_at - rand(10).days - rand(24).hours - rand(1440).minutes
           comment.update_attributes created_at: datetime, updated_at: datetime
         end

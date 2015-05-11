@@ -33,7 +33,7 @@ RSpec.describe PostsController, type: :controller do
       end
 
       context 'with invalid data' do
-        subject { post :create, post: FactoryGirl.attributes_for(:post).except(:title, :url) }
+        subject { post :create, post: FactoryGirl.attributes_for(:post).except(:title) }
 
         it 'does not create a post object' do
           expect { subject }.to_not change { Post::Base.count }
