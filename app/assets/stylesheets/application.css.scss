@@ -25,7 +25,7 @@
 .center { text-align: center; }
 
 .primary-content {
-  padding-top: 4.5em;
+  padding-top: 100px;
 }
 
 .login-provider {
@@ -52,4 +52,15 @@ h1, h2, h3, h4, h5 {
 section {
   @include outer-container;
   &:first-child { margin-top: 2.0em; }
+}
+
+.tabs{
+  background: white;
+  border-bottom: 40px solid #eee;
+}
+a.home{
+  float: left;
+  margin-left: 20%;
+  padding-top: 7px;
+
 }

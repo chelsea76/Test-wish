@@ -13,3 +13,7 @@
       li
         = link_to new_post_path, data: { secondary: true }, title: 'Add new Wish'  do
           = icon 'plus-circle'
+div.tabs
+  div
+    = link_to 'Home', new_post_path, class: 'home'
+      
