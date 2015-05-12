@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511161051) do
+ActiveRecord::Schema.define(version: 20150512164605) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.integer  "item_id",      limit: 4
+    t.string   "item_type",    limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "from_user_id", limit: 4
+  end
+
+  add_index "activities", ["item_type", "item_id"], name: "index_activities_on_item_type_and_item_id", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "authorizations", force: :cascade do |t|
     t.integer  "user_id",    limit: 4,     null: false
@@ -120,4 +132,5 @@ ActiveRecord::Schema.define(version: 20150511161051) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "activities", "users"
 end

@@ -31,6 +31,8 @@ class PostsController < ApplicationController
 
   def upvote
     current_user.up_votes(@post)
+    vote = current_user.votes.last
+    Activity.create!(user_id: @post.user_id, item: vote, from_user_id: current_user.id)
     respond_to do |format|
       format.html { redirect_to posts_path, notice: 'Successfully voted!' }
     end

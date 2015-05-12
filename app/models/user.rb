@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :trackable, :omniauthable#, omniauth_providers: CONFIGURED_OMNIAUTH_PROVIDERS
 
   has_many :authorizations
+  has_many :activities
   has_many :clicks, class_name: 'PostClick'
   has_many :posts, class_name: 'Post::Base'
 

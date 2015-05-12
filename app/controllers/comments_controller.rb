@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
 
   def create
     @post.comment_threads.create!(comment_params.merge user: current_user)
+    comment = @post.comment_threads.last
+    Activity.create!(user_id: @post.user_id, item: comment, from_user_id: current_user.id)
     redirect_to post_comments_path(@post)
   rescue => e
     flash[:error] = "Comment body can't be blank."
