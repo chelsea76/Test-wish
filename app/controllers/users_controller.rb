@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def activities
+    @activities = current_user.activities
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
