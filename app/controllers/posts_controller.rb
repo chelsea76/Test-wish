@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :outbound, :upvote]
   before_action :set_user, only: [:submitted_by_user, :liked_by_user]
 
+  #skip_before_action :check_user_signin
+
   # TODO: add pagination and infinite scroll support!
   def index
     @posts = Post::Base.order('created_at DESC')
@@ -21,6 +23,7 @@ class PostsController < ApplicationController
 
   def submitted_by_user
     @posts = Post::Base.where user: @user
+    @posts = @posts.group_by { |p| p.created_at.to_date }
     render :index
   end
 

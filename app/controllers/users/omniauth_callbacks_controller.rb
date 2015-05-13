@@ -1,5 +1,7 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    #skip_before_action :check_user_signin
+    
     def log_out
       reset_session
       redirect_to root_path, notice: 'You have successfully logged out.'

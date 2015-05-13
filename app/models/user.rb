@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   scope :user_activities, -> (user_id){
-                              Activity.where(user_id: user_id).joins('left join users on users.id=activities.from_user_id').select("users.name, activities.item_type")
+                              Activity.where(user_id: user_id).joins('left join users on users.id=activities.from_user_id left join posts on posts.id=activities.post_id').select("users.name, activities.item_type, activities.post_id, posts.title, users.avatar").order("activities.id DESC")
                           }
 
   def first_authorization

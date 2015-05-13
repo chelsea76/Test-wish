@@ -1,5 +1,6 @@
 - if @activities.any?
-  ul
-  - @activities.each do |activity|
-    li.date
-      = activity.item_type
+  div.main_activity
+	  - @activities.each do |activity|
+		    div class="url activities"
+		      = image_tag activity.avatar, class: 'current_user'
+		      = get_activity(activity).html_safe

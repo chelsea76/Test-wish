@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  #before_action :check_user_signin
   alias_method :logged_in?, :user_signed_in?
   alias_method :signed_in?, :user_signed_in?
 
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
 
   def resolve_layout
     request.xhr? ? false : 'application'
+  end
+
+  def check_user_signin
+    redirect_to root_path if (!request.xhr? && current_user.nil? && (params[:action] != 'login'))
   end
 end
