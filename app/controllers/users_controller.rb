@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def activities
-    @activities = current_user.activities
+    @activities = User.user_activities(current_user.id)
   end
 
   private

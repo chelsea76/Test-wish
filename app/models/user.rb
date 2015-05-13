@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
+  scope :user_activities, -> (user_id){
+                              Activity.where(user_id: user_id).joins('left join users on users.id=activities.from_user_id').select("users.name, activities.item_type")
+                          }
+
   def first_authorization
     authorizations.first
   end

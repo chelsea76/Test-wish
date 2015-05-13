@@ -7,6 +7,8 @@
         h2= t :'community.tagline'
     ul
       - if user_signed_in?
+        li
+          =image_tag current_user.avatar, class: 'current_user'
         li= link_to 'Log Out', logout_path, method: :delete
       - else
         li= link_to 'Log In', login_path

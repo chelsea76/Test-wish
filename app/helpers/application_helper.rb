@@ -7,4 +7,7 @@ module ApplicationHelper
         content_tag(:span, user.handle)
     end
   end
+
+  def get_activity(activity)
+  end
 end

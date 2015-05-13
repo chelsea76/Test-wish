@@ -1,5 +1,5 @@
 - if @activities.any?
+  ul
   - @activities.each do |activity|
-    div.date
-      h4.header
-        = activity.item_type
+    li.date
+      = activity.item_type

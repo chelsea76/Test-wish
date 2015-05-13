@@ -9,7 +9,7 @@ module Post
 
     belongs_to :user
     has_many :clicks, class_name: 'PostClick', foreign_key: :post_id
-    #has_many :activities, as: :item
+    has_many :activities#, as: :item
 
     validates :title, presence: true
     validates :user_id, presence: true
