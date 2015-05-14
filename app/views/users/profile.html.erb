@@ -1,0 +1,17 @@
+<%#= form_for @user, url: profile_update_path do |f|%>
+  <%#= f.text_field :email%>
+<%# end %>
+<div class="container">
+  <h2 class="s-h2">Settings</h2>
+
+  <div class="settings-fields">
+    <%= form_for @user, url: profile_update_path, method: :post do |f|%>
+      <%= f.text_field :name %>
+      <%= f.text_field :email %>
+      <%= f.text_field :headline %>
+      <input type="submit" name="commit" value="Update" class="edit_settings button v-green" data-disable-with="Updating...">
+      <% end %>
+   </div>
+
+
+</div>

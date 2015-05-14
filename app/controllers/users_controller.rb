@@ -13,6 +13,15 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def profile
+    @user = current_user
+  end
+
+  def profile_update
+    current_user.update_attributes(user_params)
+    redirect_to root_path, notice: 'User profile has been updated successfully.'
+  end
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
