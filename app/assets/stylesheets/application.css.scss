@@ -65,12 +65,31 @@ a.home, a.activity{
 }
 
 img.current_user{
-  margin-left: 200px;
+  margin-left: 150px;
   margin-top: 2px;
   float: left;
   width: 40px;
   height: 40px;
   border-radius: 40px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  padding: 2px;
+}
+.profile_container{
+  background: #534540;
+  color: white;
+  height: 180px;
+}
+
+img.user-image{
+  margin: 0;
+  max-width: 100%;
+  margin-left: 21px;
+  margin-top: 18px;
+  float: left;
+  width: 140px;
+  height: 140px;
+  border-radius: 66px;
   border: 1px solid #eee;
   background-color: #fff;
   padding: 2px;

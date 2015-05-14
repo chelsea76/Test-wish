@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="profile_container">
+  <div><a href="/@dipesh_prajapti">
+    <!-- <img class="twitter-rounded user-image" src="//avatars-cdn.producthunt.com/155683/220?1431605159" alt="220?1431605159" width="110" height="110"> -->
+    <%= image_tag @user.avatar , class: 'twitter-rounded ', height: '110', wight: '110'  %>
+</a>
+  </div>
+</div>

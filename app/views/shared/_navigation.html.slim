@@ -7,7 +7,7 @@
         h2= t :'community.tagline'
     ul
       - if user_signed_in?
-        li= link_to 'Edit Profile', edit_profile_path
+        li= link_to 'Edit Profile', edit_profile_path(id: current_user.id)
         li
           =image_tag current_user.avatar, class: 'current_user'
         li= link_to 'Log Out', logout_path, method: :delete
@@ -16,7 +16,7 @@
       li
         = link_to new_post_path, data: { secondary: true }, title: 'Add new Wish'  do
           = icon 'plus-circle'
-- if user_signed_in?
+- if user_signed_in? && !(params[:action] == 'show' && params[:controller] == 'users')
   div.tabs
     div
       = link_to 'Home', root_path, class: 'home'

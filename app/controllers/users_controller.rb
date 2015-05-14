@@ -13,8 +13,16 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    @user = User.find(params[:id])
+  rescue
+    redirect_to root_path
+  end
+
   def profile
-    @user = current_user
+    @user = User.find(params[:id])
+  rescue
+    redirect_to root_path
   end
 
   def profile_update

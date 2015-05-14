@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   end
 
   get '/login' => 'pages#login', as: :login
-  get '/profile/edit' => 'users#profile', as: :edit_profile
+  get '/profile/:id/edit' => 'users#profile', as: :edit_profile
   post '/profile/update' => 'users#profile_update', as: :profile_update
+  get '/profile/:id' => 'users#show', as: :profile
 
   resources :posts, only: [:new, :create, :index] do
     collection do
