@@ -1,7 +1,22 @@
 <div class="profile_container">
-  <div><a href="/@dipesh_prajapti">
-    <!-- <img class="twitter-rounded user-image" src="//avatars-cdn.producthunt.com/155683/220?1431605159" alt="220?1431605159" width="110" height="110"> -->
-    <%= image_tag @user.avatar , class: 'twitter-rounded ', height: '110', wight: '110'  %>
-</a>
+  <div>
+      <% image_url = @user.avatar.gsub!(/_normal/, '') %>
+      <%= image_tag image_url , class: 'twitter-rounded profle-image', height: '110', wight: '110'  %>
+      <div class='title'><h1><%= @user.name.downcase %></h1></div>
+      <div class='twitter_link'><a href="<%= "http://twitter.com/#{@user.meta["screen_name"]}"%>" target='_blank'><%= "@" + @user.meta["screen_name"]%></a></div>
+      <nav class="profile_nav">
+        <ul class="profile_tab">
+          <li class="page-header--navigation--tab" style="margin-left:70px">
+            <a href='#' class="active" data-href="/posts?profile_tab=true&type=posts">Posted</a>
+          </li>
+          <li class="page-header--navigation--tab " style="float:right;margin: -24px 87px 0px 0px;">
+             <a href='#' data-href="/posts?profile_tab=true&type=upvotes">Upvoted</a>
+          </li>
+        </ul>
+        <div class="clear"></div>
+      </nav>
   </div>
 </div>
+<ul style="margin-left: 169px;margin-top: 22px" id="tab_content">
+  <%= render partial: 'posts/post', collection: @posts, locals: {profile_tab: true} %>
+</ul>

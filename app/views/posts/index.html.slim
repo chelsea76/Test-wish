@@ -3,6 +3,6 @@
     div.date
       h4.header
         = date.strftime('%B %d, %Y')
-      ul= render partial: 'posts/post', collection: @posts[date]
+      ul= render partial: 'posts/post', collection: @posts[date], locals: {profile_tab: false}
 - else
   h3.no-posts There doesn't seem to be anything here.

@@ -7,8 +7,15 @@ li.post
     .url= link_to post.title, post_comments_path(post), target: '_blank', class: 'post-url title'
     .description= post.description
     = render 'posts/tags', post: post unless controller_name == 'comments'
-  .view-discussion
-    = link_to post_comments_path(post) do
-      = icon :comment
-      span.comment-count
-        = post.comment_threads.count
+  - unless profile_tab
+    .view-discussion
+      = link_to post_comments_path(post) do
+        = icon :comment
+        span.comment-count
+          = post.comment_threads.count
+  - else
+    div.view-discussion style="float:right;margin-right:12%;margin-top:-11%"
+      = link_to post_comments_path(post) do
+        = icon :comment
+        span.comment-count
+          = post.comment_threads.count

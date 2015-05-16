@@ -79,18 +79,46 @@ img.current_user{
   background: #534540;
   color: white;
   height: 180px;
+  .title {
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 21px;
+    h1 {
+      text-transform: capitalize !important;
+    }
+  }
+  img.profle-image{
+    margin: 0;
+    max-width: 100%;
+    margin-left: 21px;
+    margin-top: 18px;
+    float: left;
+    width: 140px;
+    height: 140px;
+    border-radius: 66px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    padding: 2px;
+  }
+  .twitter_link{
+    float: left;
+    margin-left: 30px;
+    margin-top: 15px;
+  }
+  nav.profile_nav{
+    clear: both;
+    background: rgba(255,255,255,0.2);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    overflow: hidden;
+    display: table;
+    table-layout: fixed;
+    width: 75%;
+    margin-left: 169px;
+    ul.profile_tab li a.active{
+      color: white;
+    }
+  }
+
 }
 
-img.user-image{
-  margin: 0;
-  max-width: 100%;
-  margin-left: 21px;
-  margin-top: 18px;
-  float: left;
-  width: 140px;
-  height: 140px;
-  border-radius: 66px;
-  border: 1px solid #eee;
-  background-color: #fff;
-  padding: 2px;
-}

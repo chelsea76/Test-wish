@@ -5,7 +5,7 @@ section.author
   span.post-age=< "#{distance_of_time_in_words_to_now @post.created_at} ago"
 
 section.post-details
-  ul= render 'posts/post', post: @post
+  ul= render 'posts/post',  profile_tab: false, post: @post
 
 = render 'posts/tags', post: @post
 

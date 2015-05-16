@@ -8,17 +8,28 @@ class PostsController < ApplicationController
 
   # TODO: add pagination and infinite scroll support!
   def index
-    @posts = Post::Base.order('created_at DESC')
+    if !params[:profile_tab].present?
+      @posts = Post::Base.order('created_at DESC')
 
-    if @date
-      @posts = @posts.on_date(@date)
+      if @date
+        @posts = @posts.on_date(@date)
+      end
+
+      if params[:tag].present?
+        @posts = @posts.tagged_with(params[:tag])
+      end
+
+      @posts = @posts.group_by { |p| p.created_at.to_date }
     end
 
-    if params[:tag].present?
-      @posts = @posts.tagged_with(params[:tag])
+    if params[:profile_tab].present? && params[:profile_tab] == 'true' && params[:type] == 'posts'
+      @posts = current_user.posts
+      render partial: 'posts/post', collection: @posts, locals: {profile_tab: true}, status: 200 and return
+    elsif params[:profile_tab].present? && params[:profile_tab] == 'true' && params[:type] == 'upvotes'
+      votes = current_user.votes.includes(:votable)
+      @posts = votes.map(&:votable)
+      render partial: 'posts/post', collection: @posts, locals: {profile_tab: true}, status: 200 and return
     end
-
-    @posts = @posts.group_by { |p| p.created_at.to_date }
   end
 
   def submitted_by_user
