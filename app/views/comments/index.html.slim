@@ -7,8 +7,6 @@ section.author
 section.post-details
   ul= render 'posts/post',  profile_tab: false, post: @post
 
-= render 'posts/tags', post: @post
-
 section.upvotes
   h5= pluralize @post.votes_for.size, 'upvote'
   - if @post.votes_for.size == 0

@@ -5,7 +5,7 @@ module Post
 
     self.table_name = :posts
 
-    acts_as_taggable
+    #acts_as_taggable
 
     belongs_to :user
     has_many :clicks, class_name: 'PostClick', foreign_key: :post_id

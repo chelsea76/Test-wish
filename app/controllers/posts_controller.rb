@@ -15,9 +15,9 @@ class PostsController < ApplicationController
         @posts = @posts.on_date(@date)
       end
 
-      if params[:tag].present?
-        @posts = @posts.tagged_with(params[:tag])
-      end
+      # if params[:tag].present?
+      #   @posts = @posts.tagged_with(params[:tag])
+      # end
 
       @posts = @posts.group_by { |p| p.created_at.to_date }
     end
@@ -99,6 +99,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params.require(:post).permit(:title, :description, :tag_list)
+    params.require(:post).permit(:title, :description)
   end
 end
