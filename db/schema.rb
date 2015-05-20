@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513141600) do
+ActiveRecord::Schema.define(version: 20150520134122) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20150513141600) do
     t.datetime "updated_at"
     t.string   "slug",         limit: 255
     t.integer  "clicks_count", limit: 4,     default: 0,            null: false
+    t.boolean  "is_hope",      limit: 1,     default: true
   end
 
   add_index "posts", ["clicks_count"], name: "index_posts_on_clicks_count", using: :btree
