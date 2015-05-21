@@ -1,14 +1,11 @@
 .center.complete-signup
   br
   br
-  h1= "Welcome to #{t :'community.name'}"
+  h1= "Welcome to Hopes & Wishes"
   br
-  p This humble piece of internet was created for people like you
-  p To geek out and discover new, interesting stuff
-  p So without further ado, welcome to the club, and happy upvoting :)
-  br
-  br
-  p Tell us a bit about yourself, then you can join in the fun!
+  p The only place where you can freely express your hopes & wishes and find like-minded people who share similar interests and have the same
+   outlook on life.
+  p So without further ado, welcome to the club and happy sharing :)
   br
   = form_for current_user, as: 'user', url: finish_signup_user_path(current_user), html: { role: 'form'} do |f|
     - if @show_errors && current_user.errors.any?
