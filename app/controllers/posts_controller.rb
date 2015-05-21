@@ -99,7 +99,8 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    params[:is_hope] = params[:is_hope] == 'true' ? true : false
+    binding.pry
+    params[:post][:title] = params[:post][:is_hope] == 'true' ? ("I hope " + params[:post][:title]) : ("I wish " + params[:post][:title])
     params.require(:post).permit(:title, :description, :is_hope)
   end
 end
