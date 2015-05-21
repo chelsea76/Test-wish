@@ -1,4 +1,13 @@
 = form_for @post, as: :post, url: @post.new_record? ? posts_path : post_path(@post) do |f|
+  h3
+    = "Have a New"
+    = f.radio_button :is_hope , false
+    = "Wish"
+    = f.radio_button :is_hope , true
+    = "Hope ?"    
+
+  p Express it to the world!
+  br
   - if @post.errors.any?
     #error_explanation
       h4
@@ -9,22 +18,18 @@
         - @post.errors.full_messages.each do |message|
           li= message
 
-  = f.radio_button :is_hope , true
-  = f.label "I hope", style: "margin-top: -25px;margin-left: 30px;"
-  = f.radio_button :is_hope , false
-  = f.label "I wish", style: "margin-top: -25px;margin-left: 30px;"
-  span style="float:left;" class= "type"
-    = "I hope"
-  = f.text_field :title, placeholder: 'Name Your Post', style: 'width:200px;margin-left:70px'
+  = f.text_field :title, value: 'I hope'
   = f.text_field :description, placeholder: 'Tell us about it...'
   br
-  = f.submit 'Post it!'
+  = f.submit 'Express it!'
 
 coffee:
   $("input[type='radio']").change ->
     if $(this).val() == 'true'
-      $('.type').text('I hope')
+      $('.type').text('I hope');
+      $('#post_title').val('I hope');
     else
-      $('.type').text('I wish')
+      $('.type').text('I wish');
+      $('#post_title').val('I wish');
     return
       

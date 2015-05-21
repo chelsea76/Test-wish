@@ -23,7 +23,7 @@ class PostsController < ApplicationController
     end
 
     if params[:profile_tab].present? && params[:profile_tab] == 'true' && params[:type] == 'posts'
-      @posts = current_user.posts
+      @posts = current_user.posts.order("id DESC")
       render partial: 'posts/post', collection: @posts, locals: {profile_tab: true}, status: 200 and return
     elsif params[:profile_tab].present? && params[:profile_tab] == 'true' && params[:type] == 'upvotes'
       votes = current_user.votes.includes(:votable)
@@ -99,8 +99,6 @@ class PostsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
-    binding.pry
-    params[:post][:title] = params[:post][:is_hope] == 'true' ? ("I hope " + params[:post][:title]) : ("I wish " + params[:post][:title])
     params.require(:post).permit(:title, :description, :is_hope)
   end
 end
