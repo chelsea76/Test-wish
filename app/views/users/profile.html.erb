@@ -2,13 +2,16 @@
   <%#= f.text_field :email%>
 <%# end %>
 <div class="container">
-  <h2 class="s-h2">Settings</h2>
+  <h2 class="s-h2" style="margin-top: 2px;padding-bottom: 20px;">Settings</h2>
 
   <div class="settings-fields">
     <%= form_for @user, url: profile_update_path, method: :post do |f|%>
-      <%= f.text_field :name %>
-      <%= f.text_field :email %>
-      <%= f.text_field :headline %>
+      <%= f.label "Name: "%>
+      <%= f.text_field :name, style: "margin-left: 60px;margin-top:-35px;width:30%;"  %>
+      <%= f.label "Email: "%>
+      <%= f.text_field :email, style: "margin-left: 60px;margin-top:-35px;width:30%;" %>
+      <%= f.label "Description: "%>
+      <%= f.text_field :headline, style: "margin-left: 100px;margin-top:-35px;width:30%;" %>
       <input type="submit" name="commit" value="Update" class="edit_settings button v-green" data-disable-with="Updating...">
       <% end %>
    </div>

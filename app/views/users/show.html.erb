@@ -4,6 +4,7 @@
       <%= image_tag image_url , class: 'twitter-rounded profle-image', height: '110', wight: '110'  %>
       <div class='title'><h1><%= @user.name.downcase %></h1></div>
       <div class='twitter_link'><a href="<%= "http://twitter.com/#{@user.meta["screen_name"]}"%>" target='_blank'><%= "@" + @user.meta["screen_name"]%></a></div>
+      <div style="float:left;margin-top:45px;margin-left:-87px"><%= @user.headline %></div>
       <nav class="profile_nav">
         <ul class="profile_tab">
           <li class="page-header--navigation--tab" style="margin-left:70px">

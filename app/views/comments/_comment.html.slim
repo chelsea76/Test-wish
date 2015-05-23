@@ -1,5 +1,5 @@
 .comment
-  = link_to submitted_user_posts_path(comment.user), class: 'comment-author' do
+  = link_to profile_path(id: comment.user.id), class: 'comment-author' do
     = image_tag comment.user.avatar
     .info-wrapper
       h2= comment.user.name
