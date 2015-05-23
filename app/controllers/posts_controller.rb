@@ -44,12 +44,18 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    current_user.up_votes(@post)
-    vote = current_user.votes.last
-    Activity.create!(user_id: @post.user_id, item: vote, from_user_id: current_user.id, post_id: @post.id) if current_user.id != @post.user_id
-    respond_to do |format|
-      format.html { redirect_to posts_path, notice: 'Successfully voted!' }
+    if params[:voted] == 'false'
+      current_user.up_votes(@post)
+      vote = current_user.votes.last
+      Activity.create!(user_id: @post.user_id, item: vote, from_user_id: current_user.id, post_id: @post.id) if current_user.id != @post.user_id
+      notice = "Successfully upvoted!"
+    else
+      vote = ActsAsVotable::Vote.where(voter_id: current_user.id, votable_id: @post.id).first
+      ActiveRecord::Base.connection.execute("DELETE from activities where item_id = #{vote.id} and from_user_id = #{current_user.id}")
+      vote.try(:delete)
+      notice = "Successfully removed vote!"
     end
+    redirect_to posts_path, notice: notice
   end
 
   def outbound
