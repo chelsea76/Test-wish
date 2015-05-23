@@ -37,6 +37,16 @@ class myWish
       e.preventDefault()
       Wish.wish.openURLInPanel $(this).attr('href')
 
+  textInputCharsLeft: (ele) ->
+    $(ele).keyup ->
+      value = $(this).val()
+      maxlength = $(this).data('maxlength')
+      compare = maxlength - (value.length)
+      if compare >= 0
+        compare = '<span style="color:red">*</span>' + compare
+        $('#inputcounter').html compare + 'characters left'
+      return
+
 namespace "Wish", (exports) ->
   exports.wish = new myWish
 

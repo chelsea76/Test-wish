@@ -10,8 +10,8 @@ html
     article.whiteout.hidden
     article.secondary-content
       .loading Loading...
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     article.primary-content
       = render 'shared/flash_notifications'
       section= yield
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = yield :bottom

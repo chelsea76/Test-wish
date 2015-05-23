@@ -1,9 +1,12 @@
+- is_voted = post.votes_for.select(:voter_id).map(&:voter_id).include?(current_user.id) 
 li.post
-  .submission
+  .submission title="#{ is_voted ? "You have already voted this #{ post.is_hope ? 'hope' : 'wish'}"  : ""}"
     = link_to upvote_post_path(post), method: :post do
       .upvote
-        span.upvote-link= icon(:'caret-up')
-        .vote-count= post.votes_for.size
+        span.upvote-link
+            = icon 'caret-up green', style: "#{'color:green;' if is_voted}"
+        .vote-count style="#{ 'color:green;' if is_voted}"
+          = post.votes_for.size
     .url= link_to post.title, post_comments_path(post), target: '_blank', class: 'post-url title'
     .description= post.description
   - unless profile_tab

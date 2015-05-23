@@ -24,6 +24,7 @@
   = f.submit 'Express it!'
 
 coffee:
+  Wish.wish.textInputCharsLeft($('#post_title'))
   $("input[type='radio']").change ->
     if $(this).val() == 'true'
       $('.type').text('I hope');
@@ -33,12 +34,4 @@ coffee:
       $('#post_title').val('I wish');
     return
 
-  $('#post_title').keyup ->
-    value = $(this).val()
-    maxlength = $(this).data('maxlength')
-    compare = maxlength - (value.length)
-    if compare >= 0
-      compare = '<span style="color:red">*</span>' + compare
-      $('#inputcounter').html compare + 'characters left'
-    return
       
