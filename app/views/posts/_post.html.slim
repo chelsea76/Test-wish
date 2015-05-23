@@ -1,23 +1,23 @@
 - is_voted = post.votes_for.select(:voter_id).map(&:voter_id).include?(current_user.id) 
 li.post
   .submission title="#{ is_voted ? "You have already voted this #{ post.is_hope ? 'hope' : 'wish'}"  : ""}"
-    = link_to upvote_post_path(post), method: :post do
+    = link_to "#{ is_voted ? 'javascript:void(0);' : upvote_post_path(post) }", method: :post do
       .upvote
         span.upvote-link
             = icon 'caret-up green', style: "#{'color:green;' if is_voted}"
         .vote-count style="#{ 'color:green;' if is_voted}"
           = post.votes_for.size
-    .url= link_to post.title, post_comments_path(post), target: '_blank', class: 'post-url title'
+    .url= link_to post.title, post_comments_path(post.id), target: '_blank', class: 'post-url title'
     .description= post.description
   - unless profile_tab
     .view-discussion
-      = link_to post_comments_path(post) do
+      = link_to post_comments_path(post.id) do
         = icon :comment
         span.comment-count
           = post.comment_threads.count
   - else
     div.view-discussion style="float:right;margin-right:12%;margin-top:-11%"
-      = link_to post_comments_path(post) do
+      = link_to post_comments_path(post.id) do
         = icon :comment
         span.comment-count
           = post.comment_threads.count

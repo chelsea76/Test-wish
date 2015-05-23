@@ -47,6 +47,14 @@ class myWish
         $('#inputcounter').html compare + 'characters left'
       return
 
+  shareWishOnTwitter: ->
+    $('span a.tweet_wish').click (e) ->
+      e.preventDefault()
+      loc = $(this).attr('href')
+      title = encodeURIComponent($(this).data('title'))
+      window.open 'http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=250, width=550, top=' + $(window).height() / 2 - 225 + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0'
+      return
+
 namespace "Wish", (exports) ->
   exports.wish = new myWish
 

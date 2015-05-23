@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @post.comment_threads
+    #@upvoters = @post.votes_for.joins("left join users on users.id = votes.voter_id").select("users.avatar, users.name")
     respond_to do |format|
       format.html { render layout: !request.xhr? }
     end
