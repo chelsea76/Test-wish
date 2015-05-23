@@ -10,7 +10,7 @@ section.post-details
 section.upvotes
   h5= pluralize @post.votes_for.size, 'upvote'
   span style="float:right"
-    a href="http://stark-sea-6755.herokuapp#{post_comments_path(@post.id)}" class="tweet_wish" data-title="#{truncate(@post.title, length: 100)}"
+    a href="http://stark-sea-6755.herokuapp#{post_comments_path(@post.id)}" class="tweet_wish" data-title="#{truncate(@post.title, length: 100)}" title="Share on Twitter"
       = icon 'twitter'
   - if @post.votes_for.size == 0
     p.no-votes No love for this post (yet).

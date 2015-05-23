@@ -1,4 +1,4 @@
-- is_voted = post.votes_for.select(:voter_id).map(&:voter_id).include?(current_user.id) 
+- is_voted = post.votes_for.select(:voter_id).map(&:voter_id).include?(current_user.try(:id))
 li.post
   .submission title="#{ is_voted ? "You have already voted this #{ post.is_hope ? 'hope' : 'wish'}"  : ""}"
     = link_to "#{ is_voted ? 'javascript:void(0);' : upvote_post_path(post) }", method: :post do
