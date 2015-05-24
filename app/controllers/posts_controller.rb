@@ -52,7 +52,7 @@ class PostsController < ApplicationController
       result = { voted: true, vote_count: @post.votes_for.size }.to_json
     else
       vote = ActsAsVotable::Vote.where(voter_id: current_user.id, votable_id: @post.id).first
-      ActiveRecord::Base.connection.execute("DELETE from activities where item_id = #{vote.id} and from_user_id = #{current_user.id}")
+      ActiveRecord::Base.connection.execute("DELETE from activities where item_id = #{vote.id} and from_user_id = #{current_user.id}") if vote.present?
       vote.try(:delete)
       notice = "Successfully removed vote!"
       result = { voted: false, vote_count: @post.votes_for.size }.to_json

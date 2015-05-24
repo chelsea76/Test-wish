@@ -77,7 +77,9 @@ class myWish
 
         $(upvote_count).text(data.vote_count)
         $('.upvote_count_slide').text(data.vote_count)
-        $('#upvote_'+ post_id).attr('data-voted', data.voted)
+        $('.upvote_'+ post_id).attr('data-voted', data.voted)
+      ).error((data) ->
+        alert(data.responseText)
       )
 
 namespace "Wish", (exports) ->
