@@ -15,12 +15,14 @@ class myWish
     $.ajax(urlOrPath).success((data) ->
       $('.whiteout').show()
       $('.secondary-content').html data.responseText
+      Wish.wish.upvoteWish()
     ).error((data) ->
       $('.whiteout').show()
       $('.secondary-content').html errorHTML
     ).complete((data) ->
       $('.whiteout').show()
       $('.secondary-content').html data.responseText
+      Wish.wish.upvoteWish()
     )
 
   hidePanel: ->
@@ -55,12 +57,36 @@ class myWish
       window.open 'http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=250, width=550, top=' + $(window).height() / 2 - 225 + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0'
       return
 
+  upvoteWish: ->
+    $('.upvote_link').click (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      url = this.href
+      voted = $(this).attr('data-voted')
+      post_id = $(this).data('post-id')
+      url = url + '?voted=' + voted
+      upvote_icon = '.upvote_icon_' + post_id
+      upvote_count = '.upvote_count_' + post_id
+      $.ajax(url: url, method: 'Post').success((data) ->
+        if data.voted
+          $(upvote_count).css('color', 'green')
+          $(upvote_icon).css('color', 'green')
+        else
+          $(upvote_count).css('color', 'grey')
+          $(upvote_icon).css('color', 'grey')
+
+        $(upvote_count).text(data.vote_count)
+        $('.upvote_count_slide').text(data.vote_count)
+        $('#upvote_'+ post_id).attr('data-voted', data.voted)
+      )
+
 namespace "Wish", (exports) ->
   exports.wish = new myWish
 
 $ ->
   myWish = new myWish
   myWish.showPost()
+  myWish.upvoteWish()
   $('.secondary-content').html loadingHTML
 
   $('ul.profile_tab li a').click ->
@@ -70,6 +96,7 @@ $ ->
     $.ajax(url).success((data) ->
       $('#tab_content').html data
       myWish.showPost()
+      myWish.upvoteWish()
     )
     return false;
 

@@ -1,11 +1,11 @@
 - is_voted = post.votes_for.select(:voter_id).map(&:voter_id).include?(current_user.try(:id))
 li.post
   .submission title="#{ is_voted ? "You have already voted this #{ post.is_hope ? 'hope' : 'wish'}"  : ""}"
-    = link_to upvote_post_path(post, voted: (is_voted ? true : false)), class: 'upvote_link', method: :post do
+    = link_to upvote_post_path(post), class: 'upvote_link', id: "upvote_#{post.id}",data: {  voted: (is_voted ? true : false), post_id: post.id }, method: :post do
       .upvote
         span.upvote-link
-            = icon 'caret-up green', style: "#{'color:green;' if is_voted}"
-        .vote-count style="#{ 'color:green;' if is_voted}"
+            i class="fa fa-caret-up upvote_icon_#{post.id}" style="#{'color:green;' if is_voted}"
+        div class="vote-count upvote_count_#{post.id}" style="#{ 'color:green;' if is_voted}"
           = post.votes_for.size
     .url= link_to post.title, post_comments_path(post.id), target: '_blank', class: 'post-url title'
     .description= post.description

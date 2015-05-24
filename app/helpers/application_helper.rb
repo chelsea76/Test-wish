@@ -11,9 +11,9 @@ module ApplicationHelper
   def get_activity(activity)
     case activity.item_type
     when "Comment"
-      activity.name + " has commented on the #{activity.is_hope? ? "hope" : "wish"} " + "<a href=#{post_comments_path(post_id: activity.post_id)}>" + activity.title + '</a>'
+      activity.name + " has commented on the #{activity.is_hope? ? "hope" : "wish"} " + "<a href=#{post_comments_path(post_id: activity.post_id)} title='#{activity.title}'>" + truncate(activity.title) + '</a>'
     when "ActsAsVotable::Vote"
-      activity.name + " has upvoted your #{activity.is_hope? ? "hope" : "wish"} " + "<a href=#{post_comments_path(post_id: activity.post_id)}>" + activity.title + '</a>'
+      activity.name + " has upvoted your #{activity.is_hope? ? "hope" : "wish"} " + "<a href=#{post_comments_path(post_id: activity.post_id)} title='#{activity.title}'>" + truncate(activity.title) + '</a>'
     end
   end
 end
