@@ -19,6 +19,7 @@
           li= message
 
   = f.text_field :title, value: 'I hope', data: {maxlength: 200}, maxlength: "200"
+  div id="error" style="color:red;"
   div id="inputcounter" style="text-align: right;"
   br
   = f.submit 'Express it!'

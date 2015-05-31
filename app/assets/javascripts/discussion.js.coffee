@@ -23,6 +23,7 @@ class myWish
       $('.whiteout').show()
       $('.secondary-content').html data.responseText
       Wish.wish.upvoteWish()
+      Wish.wish.newWishFormValidate()
     )
 
   hidePanel: ->
@@ -81,6 +82,17 @@ class myWish
       ).error((data) ->
         alert(data.responseText)
       )
+
+  newWishFormValidate: ->
+    $('#new_post').submit (e) ->
+      wish = $.trim($('#post_title').val())
+      if wish == 'I hope' ||  wish == 'I wish'
+        $('#error').text('Please enter valid title of Wish/Hope.')
+        setTimeout (->
+          $('#error').hide()
+          return
+        ), 3000
+        false
 
 namespace "Wish", (exports) ->
   exports.wish = new myWish
