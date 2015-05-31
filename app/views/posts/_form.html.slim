@@ -30,9 +30,11 @@ coffee:
     if $(this).val() == 'true'
       $('.type').text('I hope');
       $('#post_title').val('I hope');
+      $('#error').text('');
     else
       $('.type').text('I wish');
       $('#post_title').val('I wish');
+      $('#error').text('');
     return
 
       

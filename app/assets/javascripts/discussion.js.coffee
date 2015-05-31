@@ -87,6 +87,7 @@ class myWish
     $('#new_post').submit (e) ->
       wish = $.trim($('#post_title').val())
       if wish == 'I hope' ||  wish == 'I wish'
+        $('#error').show()
         $('#error').text('Please enter valid title of Wish/Hope.')
         setTimeout (->
           $('#error').hide()
