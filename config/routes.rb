@@ -24,7 +24,11 @@ Rails.application.routes.draw do
     resources :comments, path: 'discussion', only: [:index, :create]
   end
 
-  resource :user, as: :account, path: :account, only: [:edit, :update]
+  resources :users, as: :account, path: :account, only: [:edit, :update] do
+    member do
+      get :react_test
+    end
+  end
 
   resources :users, only: [] do
     member do

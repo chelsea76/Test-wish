@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def react_test
+    @user = User.find(params[:id])
+  end
+
   def profile
     @user = User.find(params[:id])
   rescue

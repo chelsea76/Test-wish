@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 
+gem 'react-rails', '~> 1.0'
+
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'omniauth-facebook'
@@ -44,7 +46,7 @@ end
 
 group :development do
   gem 'quiet_assets'
-  gem 'spring'
+  #gem 'spring'
   gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'
