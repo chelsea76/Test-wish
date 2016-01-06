@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def profile
+    redirect to root_path if current_user.present? && (current_user.id != params[:id].to_i)
     @user = User.find(params[:id])
   rescue
     redirect_to root_path

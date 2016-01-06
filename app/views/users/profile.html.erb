@@ -2,16 +2,31 @@
   <%#= f.text_field :email%>
 <%# end %>
 <div class="container">
-  <h2 class="s-h2">Settings</h2>
+  <h2 class="s-h2" style="margin-top: 2px;padding-bottom: 20px;">Settings</h2>
 
   <div class="settings-fields">
     <%= form_for @user, url: profile_update_path, method: :post do |f|%>
-      <%= f.text_field :name %>
-      <%= f.text_field :email %>
-      <%= f.text_field :headline %>
+      <%= f.label "Name: "%>
+      <%= f.text_field :name, style: "margin-left: 60px;margin-top:-35px;width:30%;"  %>
+      <%= f.label "Email: "%>
+      <%= f.text_field :email, style: "margin-left: 60px;margin-top:-35px;width:30%;" %>
+      <%= f.label "About Me: "%>
+      <%= f.text_field :headline, style: "margin-left: 100px;margin-top:-35px;width:70%;", data: { maxlength: '100'}, maxlength: '100' %>
+      <div id="inputcounter" style="text-align: right;float:right;margin-right:265px"></div>
       <input type="submit" name="commit" value="Update" class="edit_settings button v-green" data-disable-with="Updating...">
       <% end %>
    </div>
 
 
 </div>
+<script type="text/javascript">
+  $('#user_headline').keyup(function(){
+    var value = $(this).val();
+    var maxlength = $(this).data('maxlength');
+    var compare = maxlength - (value.length);
+    if(compare >= 0){
+      compare = '<span style="color:red">*</span>' + compare
+      $('#inputcounter').html(compare + 'characters left')
+    }
+  })
+</script>

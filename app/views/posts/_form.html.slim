@@ -19,26 +19,22 @@
           li= message
 
   = f.text_field :title, value: 'I hope', data: {maxlength: 200}, maxlength: "200"
+  div id="error" style="color:red;"
   div id="inputcounter" style="text-align: right;"
   br
   = f.submit 'Express it!'
 
 coffee:
+  Wish.wish.textInputCharsLeft($('#post_title'))
   $("input[type='radio']").change ->
     if $(this).val() == 'true'
       $('.type').text('I hope');
       $('#post_title').val('I hope');
+      $('#error').text('');
     else
       $('.type').text('I wish');
       $('#post_title').val('I wish');
+      $('#error').text('');
     return
 
-  $('#post_title').keyup ->
-    value = $(this).val()
-    maxlength = $(this).data('maxlength')
-    compare = maxlength - (value.length)
-    if compare >= 0
-      compare = '<span style="color:red">*</span>' + compare
-      $('#inputcounter').html compare + 'characters left'
-    return
       

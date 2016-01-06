@@ -33,6 +33,8 @@ gem 'devise',              github: 'plataformatec/devise'
 gem 'friendly_id',         github: 'norman/friendly_id'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
+gem 'newrelic_rpm'
+
 # this will go into the development group.... later ;)
 gem 'faker'
 gem 'rspec-rails', group: [:development, :test]
