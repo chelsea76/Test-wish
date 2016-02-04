@@ -16,6 +16,7 @@
 //= require react
 //= require ejs
 //= require react_ujs
+//= require views/test1
 //= require components
 //= require typekit
 //= require vendor/headroom.min

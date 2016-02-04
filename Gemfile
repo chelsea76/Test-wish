@@ -34,6 +34,9 @@ gem 'friendly_id',         github: 'norman/friendly_id'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 gem 'newrelic_rpm'
+group :assets do
+  gem 'ejs'
+end
 
 # this will go into the development group.... later ;)
 gem 'faker'
