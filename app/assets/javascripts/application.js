@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require react
+//= require ejs
 //= require react_ujs
 //= require components
 //= require typekit
